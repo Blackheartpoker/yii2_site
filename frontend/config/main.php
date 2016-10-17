@@ -33,9 +33,11 @@ return [
 
         'i18n' => [
             'translations' => [
-                'common*' => [
+                'app*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@app/messages',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                    ],
                 ],
             ],
         ],
@@ -50,8 +52,8 @@ return [
                 'port'       => '465',
                 'smtpsecure' => 'ssl',
                 'smtpauth'   => true,
-                'username'   => 'romanenkodp@mail.ru',
-                'password'   => 'rvs-1991dptr917',
+                'username'   => '',
+                'password'   => '',
             ],
         ],
 

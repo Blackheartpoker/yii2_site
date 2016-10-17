@@ -1,14 +1,16 @@
 <div class="navbar-wrapper">
 
-    <?= Yii::t('common', 'Example text...') ?>
+    <?= Yii::t('app', 'Example') ?>
+    <? var_dump(\Yii::$app->controller->route) ?>
+
+    <?= \yii\helpers\Html::a('Click', ['main/login', 'language' => 'ru']) ?>
 
     <?
 
     if(\Yii::$app->language == 'ru'):
-        echo yii\bootstrap\Html::a('Go to English', array_merge(
-            \Yii::$app->request->get(),
-            [\Yii::$app->controller->route, 'language' => 'en']
-        ));
+        echo yii\bootstrap\Html::a('Go to English',
+            [\Yii::$app->request->get(), 'language' => 'en']
+       );
     else:
         echo yii\bootstrap\Html::a('Перейти на русский', array_merge(
             \Yii::$app->request->get(),
