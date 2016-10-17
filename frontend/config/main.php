@@ -21,15 +21,18 @@ return [
         ],
     ],
 
-    'defaultRoute'=> 'main',
+//    'defaultRoute'=> 'main',
 
     'components' => [
+//        'request' => [
+//            'csrfParam' => '_csrf-frontend',
+//        ],
+
         'request' => [
-            'csrfParam' => '_csrf-frontend',
+            'class' => 'frontend\components\LangRequest'
         ],
 
-        'sourceLanguage' => 'en',
-        'language' => 'en',
+        'language'=>'ru-RU',
 
         'i18n' => [
             'translations' => [
