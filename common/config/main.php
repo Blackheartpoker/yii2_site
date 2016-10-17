@@ -12,11 +12,6 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'class'=>'frontend\components\LangUrlManager',
-            'rules'=>[
-                '/' => 'main/default/index',
-                '<controller:\w+>/<action:\w+>/*'=>'<controller>/<action>',
-            ]
         ],
     ],
 ];
