@@ -15,7 +15,7 @@ class Common extends Component{
 
     const EVENT_NOTIFY = 'notify_admin';
 
-    public function sendMail($subject,$body,$email="romanenkodp@mail.ru",$name){
+    public function sendMail($subject,$body,$email="romanenkodp@mail.ru",$name = 'Admin'){
         \Yii::$app->mail->compose()
             ->setFrom([ \Yii::$app->params['supportEmail'] => \Yii::$app->name])
             ->setTo([$email => $name])
@@ -27,7 +27,6 @@ class Common extends Component{
     }
 
     public function notifyAdmin($event){
-
         print "Notify Admin";
     }
 

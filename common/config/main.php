@@ -12,6 +12,10 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'class' => 'codemix\localeurls\UrlManager',
+            'languages' => ['en', 'ru'],
+            'enableDefaultLanguageUrlCode' => false,
+            'enableLanguagePersistence' => false,
         ],
     ],
 ];

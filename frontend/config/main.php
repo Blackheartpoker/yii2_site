@@ -28,8 +28,8 @@ return [
             'csrfParam' => '_csrf-frontend',
         ],
 
-
-        'language'=>'ru-RU',
+        'sourceLanguage' => 'en',
+        'language' => 'ru',
 
         'i18n' => [
             'translations' => [

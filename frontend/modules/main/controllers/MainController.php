@@ -79,7 +79,6 @@ class MainController extends \yii\web\Controller
             Yii::$app->common->sendMail($model->subject, $body );
 
             print "Send success";
-            die;
         }
 
         return $this->render('contact', ['model' => $model]);
