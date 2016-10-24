@@ -2,6 +2,8 @@
 return [
     'name' => 'Yii2-site',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
+    'sourceLanguage' => 'en-US',
+    'language' => require (dirname(__DIR__).'/config/default-lang.php'),
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -16,14 +18,27 @@ return [
 //        ],
 
         'db' => require (dirname(__DIR__).'/config/db.php'),
-
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'class' => 'codemix\localeurls\UrlManager',
-            'languages' => ['en', 'ru'],
-            'enableDefaultLanguageUrlCode' => false,
+            'languages' => require (dirname(__DIR__).'/config/languages.php'),
+            'enableDefaultLanguageUrlCode' => true,
+            'enableLanguageDetection' => false,
             'enableLanguagePersistence' => false,
         ],
+
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\DbMessageSource',
+                    'sourceMessageTable' => '{{%source_message}}',
+                    'messageTable' => '{{%message}}',
+                    'cachingDuration' => 86400,
+                    'enableCaching' => false,
+                ],
+            ],
+        ],
+
     ],
 ];

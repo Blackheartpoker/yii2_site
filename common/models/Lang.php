@@ -10,7 +10,6 @@ use \yii\db\ActiveRecord;
  *
  * @property integer $id
  * @property string $url
- * @property string $local
  * @property string $name
  * @property integer $default
  * @property integer $date_update
@@ -46,9 +45,9 @@ class Lang extends ActiveRecord
     public function rules()
     {
         return [
-            [['url', 'local', 'name', 'date_update', 'date_create'], 'required'],
-            [['default', 'date_update', 'date_create'], 'integer'],
-            [['url', 'local', 'name'], 'string', 'max' => 255],
+            [['url', 'name'], 'required'],
+            [['default'], 'integer'],
+            [['url', 'name'], 'string', 'max' => 255],
         ];
     }
 
@@ -60,7 +59,6 @@ class Lang extends ActiveRecord
         return [
             'id' => 'ID',
             'url' => 'Url',
-            'local' => 'Local',
             'name' => 'Name',
             'default' => 'Default',
             'date_update' => 'Date Update',
@@ -70,22 +68,6 @@ class Lang extends ActiveRecord
 
 
 
-    static $current = null;
-
-    static function getCurrent()
-    {
-        if( self::$current === null ){
-            self::$current = self::getDefaultLang();
-        }
-        return self::$current;
-    }
-
-    static function setCurrent($url = null)
-    {
-        $language = self::getLangByUrl($url);
-        self::$current = ($language === null) ? self::getDefaultLang() : $language;
-        Yii::$app->language = self::$current->local;
-    }
 
 
     static function getDefaultLang()
@@ -93,17 +75,57 @@ class Lang extends ActiveRecord
         return Lang::find()->where('`default` = :default', [':default' => 1])->one();
     }
 
-    static function getLangByUrl($url = null)
+    static function getLangs()
     {
-        if ($url === null) {
-            return null;
-        } else {
-            $language = Lang::find()->where('url = :url', [':url' => $url])->one();
-            if ( $language === null ) {
-                return null;
-            }else{
-                return $language;
+        return Lang::find()->all();
+    }
+
+    public function Validates()
+    {
+        $getDefault = Lang::getDefaultLang();
+        if($this->default == 1){
+            if ( $getDefault->id !== $this->id &&  $getDefault !== null ) {
+                $getDefault->default = '0';
+                $getDefault->save();
             }
+
+            $current = "<?php return '$this->url';";
+            file_put_contents(dirname(__DIR__).'/config/default-lang.php', $current);
+
+            $this->save();
+            return $this->url;
+        }else{
+            if ( $getDefault->id === $this->id ) {
+                Yii::$app->session->setFlash('error', 'Update error.');
+                return false;
+            }else{
+                $this->save();
+                return $getDefault->url;
+            }
+        }
+
+
+    }
+    public function ValidateLangs()
+    {
+        $getLangs = Lang::getLangs();
+        $current = '';
+        foreach ($getLangs as $lang){
+            $current.= '"'.$lang->url.'",';
+        }
+        $current = "<?php return [$current];";
+        file_put_contents(dirname(__DIR__).'/config/languages.php', $current);
+        return true;
+    }
+
+    public function ValidatesDelete()
+    {
+        $getDefault = Lang::getDefaultLang();
+        if($getDefault->id === $this->id)
+        {
+            return false;
+        }else{
+            return true;
         }
     }
 

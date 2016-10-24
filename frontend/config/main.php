@@ -28,19 +28,20 @@ return [
             'csrfParam' => '_csrf-frontend',
         ],
 
-        'sourceLanguage' => 'en',
-        'language' => 'ru',
 
-        'i18n' => [
-            'translations' => [
-                'app*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'fileMap' => [
-                        'app' => 'app.php',
-                    ],
-                ],
-            ],
-        ],
+//        'i18n' => [
+//            'translations' => [
+//                'app*' => [
+//                    'class' => 'yii\i18n\PhpMessageSource',
+//                    'fileMap' => [
+//                        'app' => 'app.php',
+//                    ],
+//                ],
+//            ],
+//        ],
+
+
+
 
         'mail' => [
             'class'            => 'zyx\phpmailer\Mailer',

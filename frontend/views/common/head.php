@@ -1,26 +1,4 @@
 <div class="navbar-wrapper">
-
-    <?= Yii::t('app', 'Example') ?>
-
-    <?= \yii\bootstrap\Html::a('Click', ['main/contact']) ?>
-
-
-    <?php
-
-    use yii\bootstrap\Html;
-
-    if(\Yii::$app->language == 'ru'):
-        echo Html::a('Go to English', array_merge(
-            \Yii::$app->request->get(),
-            [\Yii::$app->controller->route, 'language' => 'en']
-        ));
-    else:
-        echo Html::a('Перейти на русский',  [\Yii::$app->controller->route, 'language' => 'ru']);
-    endif;?>
-
-    <?var_dump(\Yii::$app->request->get())?>
-    <?var_dump(\Yii::$app->controller->route)?>
-
     <div class="navbar-inverse" role="navigation">
         <div class="container">
             <div class="navbar-header">
