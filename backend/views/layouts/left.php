@@ -30,8 +30,8 @@
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => Yii::t('app', 'LanguageMenuLabel'), 'icon' => 'fa fa-globe ', 'url' => '#',
                         'items' => [
-                            ['label' => 'Установлено', 'icon' => 'fa fa-language', 'url' => ['/lang'],],
-                            ['label' => 'Перевод слов', 'icon' => 'fa fa-comments', 'url' => '#',],
+                            ['label' => 'Установлено', 'icon' => 'fa fa-globe', 'url' => ['/lang'],],
+                            ['label' => 'Перевод слов', 'icon' => 'fa fa-language', 'url' => ['/message'],],
                         ],
                     ],
                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],

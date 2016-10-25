@@ -1,1 +1,1 @@
-<?php return ['en','ru'];
+<?php return ["en","ru",];

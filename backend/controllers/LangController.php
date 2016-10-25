@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Lang;
-use common\models\Search\LangSearch;
+use backend\models\Search\LangSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -55,7 +55,7 @@ class LangController extends Controller
     public function actionCreate()
     {
         $model = new Lang();
-
+        $model->default = 0;
         if ($model->load(Yii::$app->request->post()) && $model->Validates() && $model->ValidateLangs()) {
             Yii::$app->session->setFlash('success', 'Create success.');
             return $this->redirect(['index', 'language' => $model->Validates()]);

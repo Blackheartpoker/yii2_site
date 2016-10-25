@@ -2,30 +2,26 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\grid\SerialColumn;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\Search\LangSearch */
+/* @var $searchModel backend\models\Search\MessageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'LanguageMenuLabel');
+$this->title = 'Source Messages';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="lang-index">
-    <p>
-        <?= Html::a('Create Lang', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+<div class="source-message-index">
+
+    <p> <?= Html::a('Create Source Message', ['create'], ['class' => 'btn btn-success']) ?> </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'name',
-            'url',
-            'default',
+
+            'message:ntext',
+            'category',
             'id',
-//            'date_update',
-            // 'date_create',
 
             [
                 'class' => 'yii\grid\ActionColumn',

@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use backend\models\Message;
 use Yii;
 use \yii\db\ActiveRecord;
 
@@ -36,7 +37,7 @@ class Lang extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'sgx_lang';
+        return '{{%lang}}';
     }
 
     /**
@@ -125,6 +126,7 @@ class Lang extends ActiveRecord
         {
             return false;
         }else{
+            Message::deleteAll('`language` = :language', [':language' => $this->url]);
             return true;
         }
     }
