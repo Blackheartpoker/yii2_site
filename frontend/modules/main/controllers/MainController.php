@@ -65,8 +65,6 @@ class MainController extends \yii\web\Controller
     }
 
 
-
-
     public function actionContact(){
 
         $model = new ContactForm();

@@ -1,7 +1,12 @@
 <?php
 
 use yii\helpers\Html;
+use frontend\widgets\Login;
+
 ?>
+
+
+
 <div class="footer">
 
     <div class="container">
@@ -47,4 +52,13 @@ use yii\helpers\Html;
         <p class="copyright">Copyright 2013. All rights reserved.	</p>
 
 
-    </div></div>
+    </div>
+</div>
+
+
+<?php if(Yii::$app->user->isGuest):?>
+
+<?=Login::widget()?>
+
+<?php endif;?>
+

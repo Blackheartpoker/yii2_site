@@ -23,7 +23,7 @@ return [
             'showScriptName' => false,
             'class' => 'codemix\localeurls\UrlManager',
             'languages' => require (dirname(__DIR__).'/config/languages.php'),
-            'enableDefaultLanguageUrlCode' => true,
+            'enableDefaultLanguageUrlCode' => false,
             'enableLanguageDetection' => false,
             'enableLanguagePersistence' => false,
         ],

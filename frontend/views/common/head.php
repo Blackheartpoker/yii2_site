@@ -23,6 +23,14 @@
                 $menuItems[] = ['label' => 'Agents', 'url' => '#'];
                 $menuItems[] = ['label' => 'Blog', 'url' => '#'];
                 $menuItems[] = ['label' => 'Contact', 'url' => '#'];
+                $menuItems[] = '<li>'
+                    . \yii\helpers\Html::beginForm(['/site/logout'], 'post')
+                    . \yii\helpers\Html::submitButton(
+                        'Logout (' . Yii::$app->user->identity->username . ')',
+                        ['class' => 'btn btn-link']
+                    )
+                    . \yii\helpers\Html::endForm()
+                    . '</li>';
 
                 echo \yii\bootstrap\Nav::widget([
                     'options' => ['class' => 'navbar-nav navbar-right'],
@@ -37,6 +45,7 @@
 
 </div>
 <!-- #Header Starts -->
+
 
 
 
