@@ -29,17 +29,9 @@ return [
         ],
 
 
-//        'i18n' => [
-//            'translations' => [
-//                'app*' => [
-//                    'class' => 'yii\i18n\PhpMessageSource',
-//                    'fileMap' => [
-//                        'app' => 'app.php',
-//                    ],
-//                ],
-//            ],
-//        ],
 
+
+        'eauth' => require('eauth.php'),
 
 
 
@@ -77,6 +69,9 @@ return [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
+                    'logFile' => '@app/runtime/logs/eauth.log',
+                    'categories' => array('nodge\eauth\*'),
+                    'logVars' => array(),
                     'levels' => ['error', 'warning'],
                 ],
             ],

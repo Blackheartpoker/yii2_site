@@ -26,6 +26,9 @@ return [
             'enableDefaultLanguageUrlCode' => false,
             'enableLanguageDetection' => false,
             'enableLanguagePersistence' => false,
+            'rules' => array(
+                'main/main/login' => 'main/main/login',
+            ),
         ],
 
         'i18n' => [
@@ -37,6 +40,10 @@ return [
                     'cachingDuration' => 86400,
                     'enableCaching' => false,
                 ],
+                'eauth' => array(
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@eauth/messages',
+                ),
             ],
         ],
 
