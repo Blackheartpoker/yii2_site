@@ -1,7 +1,54 @@
 <?php
 use \yii\bootstrap\ActiveForm;
 use \yii\helpers\Html;
+use demogorgorn\ajax\AjaxSubmitButton;
 ?>
+
+
+
+<?php echo Html::beginForm('', 'post', ['class'=>'uk-width-medium-1-1 uk-form uk-form-horizontal']); ?>
+
+<?= \kartik\select2\Select2::widget([
+    'name' => 'country_code',
+    'data' => [
+        '0' => 'zero',
+        '1' => 'one',
+        '2' => 'two',
+        '3' => 'three',
+    ],
+    'options' => [
+        'id' => 'country_select',
+        'multiple' => false,
+        'placeholder' => 'Choose...',
+        'class' => 'uk-width-medium-7-10']
+]);
+?>
+
+<?php AjaxSubmitButton::begin([
+    'label' => 'Check',
+    'ajaxOptions' => [
+        'type'=>'POST',
+        'url'=>'test',
+        /*'cache' => false,*/
+        'success' => new \yii\web\JsExpression('function(html){
+            $("#output").html(html);
+            }'),
+    ],
+    'options' => ['class' => 'customclass', 'type' => 'submit'],
+]);
+AjaxSubmitButton::end();
+?>
+
+<?php echo Html::endForm(); ?>
+
+<div id="output"></div>
+
+
+
+
+
+
+
 
 <div class="row register">
     <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">

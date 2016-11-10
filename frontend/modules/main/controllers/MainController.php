@@ -59,7 +59,9 @@ class MainController extends \yii\web\Controller
             ],
         ];
     }
-
+    public function actionTest(){
+        return var_dump(Yii::$app->request->post());
+    }
 
     public function actionLogin()
     {
